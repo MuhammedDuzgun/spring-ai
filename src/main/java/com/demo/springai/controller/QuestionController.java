@@ -3,6 +3,7 @@ package com.demo.springai.controller;
 import com.demo.springai.ai.OpenAIService;
 import com.demo.springai.request.GetAnswerRequest;
 import com.demo.springai.response.Answer;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,4 +26,8 @@ public class QuestionController {
         return ResponseEntity.ok(answer);
     }
 
+    @PostMapping(value = "/images", produces = MediaType.IMAGE_PNG_VALUE)
+    public byte[] getImage(@RequestBody GetAnswerRequest request) {
+        return openAIService.getImage(request);
+    }
 }
