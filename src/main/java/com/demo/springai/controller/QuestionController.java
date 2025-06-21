@@ -30,4 +30,9 @@ public class QuestionController {
     public byte[] getImage(@RequestBody GetAnswerRequest request) {
         return openAIService.getImage(request);
     }
+
+    @PostMapping(value = "/talk", produces = "audio/mpeg")
+    public byte[] talk(@RequestBody GetAnswerRequest request) {
+        return openAIService.talk(request);
+    }
 }
